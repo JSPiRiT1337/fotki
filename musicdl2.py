@@ -21,7 +21,7 @@ from .. import loader, utils
 
 class MusicDLLib(loader.Library):
     developer = "@hikariatama"
-    version = (1, 0, 19)
+    version = (10, 1, 40)
 
     def __init__(self):
         self.config = loader.LibraryConfig(
