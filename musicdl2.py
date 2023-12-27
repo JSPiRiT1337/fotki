@@ -56,12 +56,12 @@ class MusicDLLib(loader.Library):
         document = (
             await self._dl("@spotifysavebot", full_name) if not document else document
         )
-        document = await self._dl("@vkm4bot", full_name) if not document else document
+        document = await self._dl("@spotifysavebot", full_name) if not document else document
         return document
 
     async def dl(
         self,
-        full_name: str,
+        full_name: str, 
         only_document: bool = False,
         retries: int = 0,
     ) -> typing.Union[Document, str]:
