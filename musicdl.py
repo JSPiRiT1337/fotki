@@ -53,11 +53,6 @@ class MusicDLLib(loader.Library):
 
     async def _legacy(self, full_name: str):
         document = await self._dl("@lydbot", full_name)
-        document = (
-            await self._dl("@spotifysavebot", full_name) if not document else document
-        )
-        document = await self._dl("@vkm4bot", full_name) if not document else document
-        return document
 
     async def dl(
         self,
