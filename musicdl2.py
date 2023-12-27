@@ -1,10 +1,4 @@
-#             █ █ ▀ █▄▀ ▄▀█ █▀█ ▀
-#             █▀█ █ █ █ █▀█ █▀▄ █
-#              © Copyright 2022
-#           https://t.me/hikariatama
-#
-# 🔒      Licensed under the GNU AGPLv3
-# 🌐 https://www.gnu.org/licenses/agpl-3.0.html
+
 
 import asyncio
 import io
@@ -65,7 +59,7 @@ class MusicDLLib(loader.Library):
 
             if  self.config["lossless_priority"] or not document:
                 try:
-                    q = await self._client.inline_query("@losslessrobot", full_name)
+                    q = await self._client.inline_query("@lydbot", full_name)
                 except BotResponseTimeoutError:
                     if retries >= self.config["retries"]:
                         raise Exception("Failed to download")
