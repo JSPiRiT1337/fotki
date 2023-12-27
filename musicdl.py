@@ -20,7 +20,7 @@ from .. import loader, utils
 
 
 class MusicDLLib(loader.Library):
-    developer = "hikari"
+    developer = "@hikariatama"
     version = (1, 0, 19)
 
     def __init__(self):
@@ -54,9 +54,9 @@ class MusicDLLib(loader.Library):
     async def _legacy(self, full_name: str):
         document = await self._dl("@lydbot", full_name)
         document = (
-            await self._dl("@lydbot", full_name) if not document else document
+            await self._dl("@spotifysavebot", full_name) if not document else document
         )
-        document = await self._dl("@lydbot", full_name) if not document else document
+        document = await self._dl("@vkm4bot", full_name) if not document else document
         return document
 
     async def dl(
@@ -71,7 +71,7 @@ class MusicDLLib(loader.Library):
 
             if self.config["lossless_priority"] or not document:
                 try:
-                    q = await self._client.inline_query("@lydbot", full_name)
+                    q = await self._client.inline_query("@losslessrobot", full_name)
                 except BotResponseTimeoutError:
                     if retries >= self.config["retries"]:
                         raise Exception("Failed to download")
