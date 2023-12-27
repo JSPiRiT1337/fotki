@@ -21,7 +21,7 @@ from .. import loader, utils
 
 class MusicDLLib(loader.Library):
     developer = "@hikariatama"
-    version = (10, 1, 40)
+    version = (1, 0, 19)
 
     def __init__(self):
         self.config = loader.LibraryConfig(
@@ -61,15 +61,15 @@ class MusicDLLib(loader.Library):
 
     async def dl(
         self,
-        full_name: str, 
+        full_name: str,
         only_document: bool = False,
         retries: int = 0,
     ) -> typing.Union[Document, str]:
         try:
-            if not self.config["lossless_priority"]:
+            if  self.config["lossless_priority"]:
                 document = await self._legacy(full_name)
 
-            if self.config["lossless_priority"] or not document:
+            if not self.config["lossless_priority"] or not document:
                 try:
                     q = await self._client.inline_query("@losslessrobot", full_name)
                 except BotResponseTimeoutError:
