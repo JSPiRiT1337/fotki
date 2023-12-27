@@ -53,12 +53,6 @@ class MusicDLLib(loader.Library):
 
     async def _legacy(self, full_name: str):
         document = await self._dl("@lydbot", full_name)
-        document = (
-            await self._dl("@spotifysavebot", full_name) if not document else document
-        )
-        document = await self._dl("@spotifysavebot", full_name) if not document else document
-        return document
-
     async def dl(
         self,
         full_name: str,
@@ -66,10 +60,10 @@ class MusicDLLib(loader.Library):
         retries: int = 0,
     ) -> typing.Union[Document, str]:
         try:
-            if  self.config["lossless_priority"]:
+            if not self.config["lossless_priority"]:
                 document = await self._legacy(full_name)
 
-            if not self.config["lossless_priority"] or not document:
+            if  self.config["lossless_priority"] or not document:
                 try:
                     q = await self._client.inline_query("@losslessrobot", full_name)
                 except BotResponseTimeoutError:
